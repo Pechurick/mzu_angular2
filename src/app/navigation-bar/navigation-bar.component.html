@@ -1,0 +1,45 @@
+<header class="header">
+    <div class="header__wrapper">
+        <a routerLink="/">
+            <div class="header__logo"> 
+                <img [src]="logo.img" [alt]="logo.text" class="header__img">
+                <span class="header__logo-text">{{ logo.text }}</span>
+            </div>
+        </a>
+        <nav class="header__menu">
+            <ul class="header__menu-items">
+                <li class="header__menu-item"
+                    *ngFor="let headerItem of headerMenu"
+                    routerLinkActive="menu-item--checked">
+                    <a [routerLink]="headerItem.link">{{ headerItem.text }}</a>
+                    <img *ngIf="headerItem.img" 
+                        [src]="headerItem.img" 
+                        alt="{{ headerItem.text }}">
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header__actions">
+        <div class="header__actions-search">
+            <a>
+                <img src="{{ searchIcon }}" alt="{{ searchIcon }}">
+            </a>
+        </div>
+        <div class="header__actions-language">
+            <a>{{ languageController.text }}</a>
+            <img [src]="languageController.img" [alt]="languageController.text">
+        </div>
+        <div class="header__actions-blind">
+            <button class="header__blind-btn">
+                <img [src]="blindController.img" [alt]="blindController.text">
+                <span>{{ blindController.text }}</span>
+            </button>
+        </div>
+        <div class="header__actions-complience">
+            <button routerLink="/anticorruption/report-corruption" class="header__complience-btn">
+                <span>{{ compliance.text }}</span>
+                <span>{{ compliance.logo }}</span>
+            </button>
+        </div>
+    </div>
+</header>
